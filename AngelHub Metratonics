@@ -1,0 +1,53 @@
+import turtle
+
+screen = turtle.Screen()
+screen.bgcolor("skyblue")
+
+pen = turtle.Turtle()
+pen.speed(0)
+pen.pensize(2)
+
+def draw_wing(x, y, radius, angle):
+    pen.penup()
+    pen.goto(x, y)
+    pen.pendown()
+    pen.setheading(angle)
+    pen.circle(radius, 90)
+    pen.circle(radius / 2, 90)
+
+# Head
+pen.penup()
+pen.goto(0, -50)
+pen.pendown()
+pen.color("gold")
+pen.begin_fill()
+pen.circle(50)
+pen.end_fill()
+
+# Halo
+pen.penup()
+pen.goto(0, 20)
+pen.pendown()
+pen.color("yellow")
+pen.width(4)
+pen.circle(30)
+
+# Body
+pen.penup()
+pen.goto(0, -50)
+pen.setheading(-90)
+pen.pendown()
+pen.color("white")
+pen.begin_fill()
+for _ in range(3):
+    pen.forward(100)
+    pen.left(120)
+pen.end_fill()
+
+# Wings
+pen.color("lightgrey")
+draw_wing(-50, -30, 60, 160)
+draw_wing(50, -30, -60, 20)
+
+pen.hideturtle()
+screen.mainloop()
